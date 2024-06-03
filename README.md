@@ -1,8 +1,6 @@
 # UnitTesting-MVVM-Kotlin-Koin-Coroutines-Sample
 
-This project uses currency converter apis to demostrate the unit testing in Android app using Koin Dependecy.
-
-This repository covers sample unit testing for Login and listing screens using MVVM,Kotlin,Coroutines and Koin.
+This project uses currency converter apis to demostrate the unit testing in Android app using MVVM,Kotlin,Coroutines and Koin.
 
 ***MVVM*** stands for Model, View, ViewModel.
 
