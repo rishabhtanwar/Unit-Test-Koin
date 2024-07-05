@@ -29,6 +29,7 @@ class MainViewModel(
     private var rateListMap: HashMap<String, Double?> = hashMapOf()
 
 
+
     fun getCurrencyListResponse() {
         viewModelScope.launch {
             currencyRepo.getLatestCurrencyResponse().flowOn(dispatcherProvider.io).collect() {

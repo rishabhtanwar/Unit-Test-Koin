@@ -12,12 +12,12 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.databinding.DataBindingUtil
+import androidx.media3.common.MediaItem
+import androidx.media3.exoplayer.ExoPlayer
 import com.example.currencyconverter.R
 import com.example.currencyconverter.data.model.CurrencyListResponse
 import com.example.currencyconverter.data.model.Resource
 import com.example.currencyconverter.databinding.ActivityMainBinding
-import com.example.currencyconverter.di.getSharePref
-import com.example.currencyconverter.util.ConnectivityHelper
 import com.example.currencyconverter.util.Constant
 import com.example.currencyconverter.util.amountValidate
 import com.example.currencyconverter.util.showToast
@@ -36,17 +36,35 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        pref=getSharePref(this)
-        rvAdapter = RvAdapter()
-        activityMainBinding.rv.adapter = rvAdapter
-        setObserver()
-        if (pref.getString(Constant.SAVED_API_RESPONSE,null).isNullOrEmpty() && !ConnectivityHelper.checkConnectivity(this)){
-            showToast("Please check your internet connection and come back again!!")
-            return
-        }
-        viewModel.getCurrencyListResponse()
+//        pref=getSharePref(this)
+//        rvAdapter = RvAdapter()
+//        activityMainBinding.rv.adapter = rvAdapter
+//        setObserver()
+//        if (pref.getString(Constant.SAVED_API_RESPONSE,null).isNullOrEmpty() && !ConnectivityHelper.checkConnectivity(this)){
+//            showToast("Please check your internet connection and come back again!!")
+//            return
+//        }
+//        viewModel.getCurrencyListResponse()
+        val player = ExoPlayer.Builder(this).build()
 
+// Bind the player to the view.
+        activityMainBinding.exoPlayerView.setPlayer(player)
+
+// Create and add media item
+//        https://drive.google.com/file/d/1MI-u7XeKnF3CJzBbSv0bvn6nC9mnvFWL/preview
+        // 1v4VKMDQZ-LGCM48UYvwZitZBY3cam9jX
+        val videoURL =
+            "https://drive.google.com/u/1/uc?id=1v4VKMDQZ-LGCM48UYvwZitZBY3cam9jX&export=download"
+        val mediaItem: MediaItem = MediaItem.fromUri(videoURL)
+        player.addMediaItem(mediaItem)
+
+// Prepare exoplayer
+        player.prepare()
+
+// Play media when it is ready
+        player.playWhenReady = true
     }
+
 
     private fun setObserver() {
         viewModel.currencyListResponse.observe(this) {

@@ -63,7 +63,6 @@ android {
         isEnabled = true
     }
 }
-
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -77,6 +76,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.material)
+    implementation(libs.androidx.media3.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -117,5 +117,9 @@ dependencies {
     testImplementation("io.insert-koin:koin-test-junit4:3.6.0-wasm-alpha2")
     // Koin for JUnit 5
     testImplementation("io.insert-koin:koin-test-junit5:3.6.0-wasm-alpha2")
+
+    implementation ("androidx.media3:media3-exoplayer:1.3.1")
+    implementation ("androidx.media3:media3-ui:1.3.1")
+    implementation ("androidx.media3:media3-exoplayer-dash:1.3.1")
 
 }
