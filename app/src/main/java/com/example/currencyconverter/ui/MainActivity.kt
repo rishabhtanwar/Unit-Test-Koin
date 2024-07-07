@@ -18,6 +18,8 @@ import com.example.currencyconverter.R
 import com.example.currencyconverter.data.model.CurrencyListResponse
 import com.example.currencyconverter.data.model.Resource
 import com.example.currencyconverter.databinding.ActivityMainBinding
+import com.example.currencyconverter.di.getSharePref
+import com.example.currencyconverter.util.ConnectivityHelper
 import com.example.currencyconverter.util.Constant
 import com.example.currencyconverter.util.amountValidate
 import com.example.currencyconverter.util.showToast
